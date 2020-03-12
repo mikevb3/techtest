@@ -27,3 +27,4 @@ let Firebase = firebase.initializeApp(firebaseConfig)
 
 export default Firebase
 export const db = firebase.firestore();
+export const increment = firebase.firestore.FieldValue.increment(1); //increment function
