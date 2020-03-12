@@ -4,7 +4,7 @@ This is a react native technical test for Learnit.
 
 ## Installation
 
-Git clone into directory and then run.
+Git clone https://github.com/mikevb3/techtest
 
 ```bash
 yarn install
