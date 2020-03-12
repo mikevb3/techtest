@@ -76,10 +76,10 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: "#4339CE"
     },
-    logoSubtitle:{
+    logoSubtitle: {
         fontSize: 10,
         color: "#666",
-        marginBottom: 20 
+        marginBottom: 20
     },
     inputView: {
         width: "80%",
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     loginBtn: {
         width: "80%",
         backgroundColor: "#4339CE",
-        borderRadius: 25,
+        borderRadius: 5,
         height: 50,
         alignItems: "center",
         justifyContent: "center",

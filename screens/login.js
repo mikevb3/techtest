@@ -2,12 +2,24 @@ import React from 'react'
 import { View, TextInput, StyleSheet, TouchableOpacity, Text, Button } from 'react-native'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { updateEmail, updatePassword, login } from '../actions/user'
+import { updateEmail, updatePassword, login, getUser } from '../actions/user'
+import Firebase from '../config/firebase_config'
 
 class Login extends React.Component {
     handleLogin = () => {
         this.props.login()
-        this.props.navigation.navigate('Profile')
+        this.props.navigation.navigate('Counter')
+    }
+
+    componentDidMount = () => {
+        Firebase.auth().onAuthStateChanged(user => {
+            if (user) {
+                this.props.getUser(user.uid)
+                if (this.props.user != null) {
+                    this.props.navigation.navigate('Counter')
+                }
+            }
+        })
     }
 
     render() {
@@ -33,7 +45,7 @@ class Login extends React.Component {
                         placeholderTextColor="#666"
                         onChangeText={password => this.props.updatePassword(password)} />
                 </View>
-                <TouchableOpacity style={styles.loginBtn} onPress={this.handleLogin}>
+                <TouchableOpacity style={styles.loginBtn} onPress={() => this.props.login()}>
                     <Text style={styles.loginText}>Iniciar Sesión</Text>
                 </TouchableOpacity>
 
@@ -84,7 +96,7 @@ const styles = StyleSheet.create({
     loginBtn: {
         width: "80%",
         backgroundColor: "#4339CE",
-        borderRadius: 25,
+        borderRadius: 5,
         height: 50,
         alignItems: "center",
         justifyContent: "center",
@@ -98,7 +110,7 @@ const styles = StyleSheet.create({
 
 
 const mapDispatchToProps = dispatch => {
-    return bindActionCreators({ updateEmail, updatePassword, login }, dispatch)
+    return bindActionCreators({ updateEmail, updatePassword, login, getUser }, dispatch)
 }
 
 const mapStateToProps = state => {
