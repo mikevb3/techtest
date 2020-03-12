@@ -32,7 +32,7 @@ class Login extends React.Component {
                         style={styles.inputText}
                         value={this.props.user.email || '' }
                         onChangeText={email => this.props.updateEmail(email)}
-                        placeholder='Email'
+                        placeholder='Correo electrónico'
                         placeholderTextColor="#666"
                         autoCapitalize='none' />
                 </View>
@@ -41,7 +41,7 @@ class Login extends React.Component {
                         secureTextEntry
                         style={styles.inputText}
                         value={this.props.user.password || ''}
-                        placeholder="Password..."
+                        placeholder="Contraseña..."
                         placeholderTextColor="#666"
                         onChangeText={password => this.props.updatePassword(password)} />
                 </View>

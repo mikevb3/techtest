@@ -26,16 +26,15 @@ class Counter extends React.Component {
         return (
             <View style={styles.container}>
                 <View style={styles.counterContainer}>
-                    <Text>Profile Screen</Text>
-                    <Text>{this.props.user.email}</Text>
-                    <Text>{this.props.user.count}</Text>
-                    <TouchableOpacity style={styles.loginBtn} onPress={() => this.props.incrementCounter()}>
-                        <Text style={styles.loginText}>+</Text>
+                    <Text style={styles.counterNum}>{this.props.user.count}</Text>
+                    <Text style={styles.counterText}>Contador</Text>
+                    <TouchableOpacity style={styles.incrementBtn} onPress={() => this.props.incrementCounter()}>
+                        <Text style={styles.incrementText}>+</Text>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.container}>
-                    <TouchableOpacity style={styles.loginBtn} onPress={() => this.handleSignout()}>
-                        <Text style={styles.loginText}>Cerrar Sesión</Text>
+                <View style={styles.footerContainer}>
+                    <TouchableOpacity style={styles.signOutBtn} onPress={() => this.handleSignout()}>
+                        <Text style={styles.signOutText}>Cerrar Sesión</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -61,13 +60,25 @@ export default connect(
 
 const styles = StyleSheet.create({
     container: {
-        flex:1
+        flex:1,
+        flexDirection: "column",
+        justifyContent: "space-around",
+        alignItems: "stretch",
+        alignContent: "center"
     },
     counterContainer: {
         flex: 2,
-        backgroundColor: '#4451EC'
+        backgroundColor: '#4451EC',
+        paddingLeft:"10vw",
+        paddingVertical:40
     },
-    loginBtn: {
+    footerContainer: {
+        flex: 1,
+        alignSelf:"stretch",
+        alignItems: "center",
+        backgroundColor: 'white'
+    },
+    signOutBtn: {
         width: "80%",
         backgroundColor: "#4339CE",
         borderRadius: 5,
@@ -77,7 +88,27 @@ const styles = StyleSheet.create({
         marginTop: 40,
         marginBottom: 10
     },
-    loginText: {
+    signOutText: {
         color: "white"
+    },
+    incrementBtn: {
+        width: "25vmin",
+        height: "20vmin",
+        backgroundColor: "white",
+        borderRadius: 5,
+        alignItems: "center",
+        justifyContent: "center"
+    },
+    incrementText: {
+        color: "#4339CE",
+        fontSize: 70,
+    },
+    counterText: {
+        color: "white",
+        fontSize: 25,
+    },
+    counterNum:{
+        color: "white",
+        fontSize: 60,  
     }
 })
