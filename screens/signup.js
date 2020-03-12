@@ -11,7 +11,7 @@ class Signup extends React.Component {
 
     handleSignUp = () => {
         this.props.signup()
-        this.props.navigation.navigate('Profile')
+        this.props.navigation.navigate('Login')
     }
 
     render() {
@@ -20,17 +20,20 @@ class Signup extends React.Component {
                 <View style={styles.inputView} >
                     <TextInput
                         style={styles.inputText}
-                        placeholder="Email..."
+                        value={this.props.user.email || '' }
+                        onChangeText={email => this.props.updateEmail(email)}
+                        placeholder='Email'
                         placeholderTextColor="#666"
-                        onChangeText={text => this.setState({ email: text })} />
+                        autoCapitalize='none' />
                 </View>
                 <View style={styles.inputView} >
                     <TextInput
                         secureTextEntry
                         style={styles.inputText}
+                        value={this.props.user.password || ''}
                         placeholder="Password..."
                         placeholderTextColor="#666"
-                        onChangeText={text => this.setState({ password: text })} />
+                        onChangeText={password => this.props.updatePassword(password)} />
                 </View>
                 <TouchableOpacity style={styles.loginBtn} onPress={this.handleSignUp}>
                     <Text style={styles.loginText}>Registrarse</Text>

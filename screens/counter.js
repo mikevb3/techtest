@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, StyleSheet, Button, TextInput, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { updateCount, incrementCounter } from '../actions/user'
+import { updateCount, incrementCounter, getUser } from '../actions/user'
 import Firebase from '../config/firebase_config'
 
 class Counter extends React.Component {
@@ -25,29 +25,27 @@ class Counter extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text>Profile Screen</Text>
-                <Text>{this.props.user.email}</Text>
-                <Text>{this.props.user.count}</Text>
-                <Button title='Logout' onPress={this.handleSignout} />
-                <TouchableOpacity onPress={() => this.props.incrementCounter()}>
-                    <Text >+</Text>
-                </TouchableOpacity>
+                <View style={styles.counterContainer}>
+                    <Text>Profile Screen</Text>
+                    <Text>{this.props.user.email}</Text>
+                    <Text>{this.props.user.count}</Text>
+                    <TouchableOpacity style={styles.loginBtn} onPress={() => this.props.incrementCounter()}>
+                        <Text style={styles.loginText}>+</Text>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.container}>
+                    <TouchableOpacity style={styles.loginBtn} onPress={() => this.handleSignout()}>
+                        <Text style={styles.loginText}>Cerrar Sesión</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
+
         )
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center'
-    }
-})
-
 const mapDispatchToProps = dispatch => {
-    return bindActionCreators({ updateCount, incrementCounter }, dispatch)
+    return bindActionCreators({ updateCount, incrementCounter, getUser }, dispatch)
 }
 
 const mapStateToProps = state => {
@@ -60,3 +58,26 @@ export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(Counter)
+
+const styles = StyleSheet.create({
+    container: {
+        flex:1
+    },
+    counterContainer: {
+        flex: 2,
+        backgroundColor: '#4451EC'
+    },
+    loginBtn: {
+        width: "80%",
+        backgroundColor: "#4339CE",
+        borderRadius: 5,
+        height: 50,
+        alignItems: "center",
+        justifyContent: "center",
+        marginTop: 40,
+        marginBottom: 10
+    },
+    loginText: {
+        color: "white"
+    }
+})
