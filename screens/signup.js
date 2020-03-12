@@ -21,7 +21,7 @@ class Signup extends React.Component {
                     <TextInput
                         style={styles.inputText}
                         placeholder="Email..."
-                        placeholderTextColor="#003f5c"
+                        placeholderTextColor="#666"
                         onChangeText={text => this.setState({ email: text })} />
                 </View>
                 <View style={styles.inputView} >
@@ -29,14 +29,14 @@ class Signup extends React.Component {
                         secureTextEntry
                         style={styles.inputText}
                         placeholder="Password..."
-                        placeholderTextColor="#003f5c"
+                        placeholderTextColor="#666"
                         onChangeText={text => this.setState({ password: text })} />
                 </View>
                 <TouchableOpacity style={styles.loginBtn} onPress={this.handleSignUp}>
-                    <Text style={styles.loginText}>Signup</Text>
+                    <Text style={styles.loginText}>Registrarse</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => this.props.navigation.navigate('Login')}>
-                    <Text style={styles.loginText}>Cancel</Text>
+                    <Text>Cancelar</Text>
                 </TouchableOpacity>
 
 
@@ -67,20 +67,24 @@ export default connect(
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#003f5c',
+        backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
     },
     logo: {
         fontWeight: "bold",
-        fontSize: 50,
-        color: "#fb5b5a",
-        marginBottom: 40
+        fontSize: 20,
+        color: "#4339CE"
+    },
+    logoSubtitle:{
+        fontSize: 10,
+        color: "#666",
+        marginBottom: 20 
     },
     inputView: {
         width: "80%",
-        backgroundColor: "#465881",
-        borderRadius: 25,
+        backgroundColor: "#e1e5eb",
+        borderRadius: 5,
         height: 50,
         marginBottom: 20,
         justifyContent: "center",
@@ -96,7 +100,7 @@ const styles = StyleSheet.create({
     },
     loginBtn: {
         width: "80%",
-        backgroundColor: "#fb5b5a",
+        backgroundColor: "#4339CE",
         borderRadius: 25,
         height: 50,
         alignItems: "center",

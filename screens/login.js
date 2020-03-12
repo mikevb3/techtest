@@ -13,14 +13,15 @@ class Login extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.logo}>We are LERNIT</Text>
-                <Text>Mejora tu experiencia de aprendizaje.</Text>
+                <Text style={styles.logo}>We are Lernit</Text>
+                <Text style={styles.logoSubtitle}>Mejora tu experiencia de aprendizaje.</Text>
                 <View style={styles.inputView} >
                     <TextInput
                         style={styles.inputText}
                         value={this.props.user.email || '' }
                         onChangeText={email => this.props.updateEmail(email)}
                         placeholder='Email'
+                        placeholderTextColor="#666"
                         autoCapitalize='none' />
                 </View>
                 <View style={styles.inputView} >
@@ -29,15 +30,15 @@ class Login extends React.Component {
                         style={styles.inputText}
                         value={this.props.user.password || ''}
                         placeholder="Password..."
-                        placeholderTextColor="#003f5c"
+                        placeholderTextColor="#666"
                         onChangeText={password => this.props.updatePassword(password)} />
                 </View>
                 <TouchableOpacity style={styles.loginBtn} onPress={this.handleLogin}>
-                    <Text style={styles.loginText}>LOGIN</Text>
+                    <Text style={styles.loginText}>Iniciar Sesión</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.loginBtn} onPress={() => this.props.navigation.navigate('Signup')}>
-                    <Text style={styles.loginText}>Signup</Text>
+                    <Text style={styles.loginText}>Registrarse</Text>
                 </TouchableOpacity>
 
 
@@ -55,9 +56,13 @@ const styles = StyleSheet.create({
     },
     logo: {
         fontWeight: "bold",
-        fontSize: 50,
-        color: "#4339CE",
-        marginBottom: 40
+        fontSize: 20,
+        color: "#4339CE"
+    },
+    logoSubtitle:{
+        fontSize: 10,
+        color: "#666",
+        marginBottom: 20 
     },
     inputView: {
         width: "80%",
