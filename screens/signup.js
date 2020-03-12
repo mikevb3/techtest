@@ -1,16 +1,17 @@
 import React from 'react'
-import { View, TextInput, StyleSheet, TouchableOpacity, Text, Button } from 'react-native'
+import { View, TextInput, StyleSheet, TouchableOpacity, Text, Button } from 'react-native';
+
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import { updateEmail, updatePassword, signup } from '../actions/user'
 
 import Firebase from '../config/firebase_config';
 
 class Signup extends React.Component {
 
     handleSignUp = () => {
-        const { email, password } = this.state
-        Firebase.auth()
-            .createUserWithEmailAndPassword(email, password)
-            .then(() => this.props.navigation.navigate('Profile'))
-            .catch(error => console.log(error))
+        this.props.signup()
+        this.props.navigation.navigate('Profile')
     }
 
     render() {
@@ -43,6 +44,25 @@ class Signup extends React.Component {
         );
     }
 }
+
+// Redux Definition
+
+const mapDispatchToProps = dispatch => {
+    return bindActionCreators({ updateEmail, updatePassword, signup }, dispatch)
+}
+
+const mapStateToProps = state => {
+    return {
+        user: state.user
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Signup)
+
+// Styles
 
 const styles = StyleSheet.create({
     container: {
@@ -88,5 +108,3 @@ const styles = StyleSheet.create({
         color: "white"
     }
 });
-
-export default Signup
