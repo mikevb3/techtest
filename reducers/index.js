@@ -2,8 +2,6 @@ import { combineReducers } from 'redux'
 import { LOGIN, SIGNUP, UPDATE_EMAIL, UPDATE_PASSWORD, UPDATE_COUNT } from '../actions/user'
 
 const user = (state = {}, action) => {
-    console.log(state)
-    console.log(action)
     switch (action.type) {
         case LOGIN:
             return action.payload

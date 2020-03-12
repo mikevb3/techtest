@@ -1,5 +1,7 @@
 import firebase from 'firebase';
 import 'firebase/firestore';
+
+//@note best practices indican usar environments para evitar compartir información sensible, para efectos de este test lo omitire
 // import {
 //     API_KEY,
 //     AUTH_DOMAIN,
